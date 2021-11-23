@@ -6,7 +6,7 @@ export let cart = {
   items: [],
   addProduct: function (event) {
     let id = event.target.id; //ส่ง event ไปที่ id ของปุ่ม Add to cart
-    let getUser = CookieUtil.getCookie("Username");
+    let getUser = CookieUtil.getCookie("Username"); //เรียก cookie Username เพื่อตรวจสอบว่ามี การ login หรือไม่ ถ้าไม่จะไม่สามารถ add สินค้าได้
     const product = products.find((product) => product.productId === id);
     if (getUser) {
       let checkItem = cart.items.find((item) => item.productId === id); //ใช้ find ในการหาสินค้าในตะกร้า
@@ -35,9 +35,8 @@ export let cart = {
         cart.saveCart();
       }
       cart.countInCart();
-      localStorage.setItem("InCarts", cart.countInCart());
     } else {
-      alert("Login before buy something");
+      alert("Login before buy something"); //ถ้าไม่มี username จะ alert ให้ login ก่อน
     }
   },
 
@@ -52,8 +51,8 @@ export let cart = {
     cart.items = [];
     alert("Your cart is empty!");
     console.log(this.items);
-    localStorage.removeItem("InCarts");
     localStorage.removeItem("shoppingCart");
+    numCart.textContent = cart.countInCart();
   },
   countInCart: function () {
     return cart.items.reduce(
@@ -89,11 +88,11 @@ export let cart = {
   },
   loadCart: function () {
     //function ในการ load ตะกร้าสินค้าที่ผู้ใช้เคยเพิ่มไป เมื่อเปิดใหม่ข้อมูลจะยังคงอยู่
-    let cartLoad = localStorage.getItem("shoppingCart");
-    let Incart = localStorage.getItem("InCarts");
+    let cartLoad = localStorage.getItem("shoppingCart"); 
     cart.items = cartLoad ? JSON.parse(cartLoad) : [];
-    numCart.textContent = Incart ? Incart : 0;
+    numCart.textContent = cartLoad ? cart.countInCart() : 0;
   },
+ 
 };
 
 const buttonTrash = document.getElementById("button-trash");
@@ -102,13 +101,11 @@ const lookProductInCart = document.getElementById("cart-icon");
 
 buttonTrash.addEventListener("click", () => {
   cart.emptyCart();
-  numCart.textContent = cart.countInCart();
 });
 
 lookProductInCart.addEventListener("click", () => {
   cart.showCart();
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  cart.loadCart();
-});
+cart.loadCart();
+

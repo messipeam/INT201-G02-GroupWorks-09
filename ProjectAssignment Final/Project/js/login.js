@@ -15,8 +15,7 @@ export let login = {
     loadMember : function(){
         let loadUser = CookieUtil.getCookie("Username");
         if(loadUser){
-          userText.textContent = `Welcome: ${loadUser}`;
-         // logoutText.innerHTML=``
+         userText.textContent = `Welcome: ${loadUser}`;
          loginBox.style.display = "none"; 
          logoutBox.style.display = "flex";
         }else{
@@ -43,7 +42,8 @@ logoutBox.addEventListener("click", () => { //ปุ่ม logout
   location.reload();
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  login.loadMember();
-})
+login.loadMember();
+
+
+
 

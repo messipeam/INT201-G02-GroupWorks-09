@@ -10,38 +10,20 @@ theme.style.color = `${localStorage.getItem("buttonColor")}`; //set ค่าเ
 //array เก็บโค้ดสี โดยใช้เป็น array ซ้อน array ช่องแรกเก็บสีปุ่ม ช่องที่สองเก็บสีพื้นหลัง
 const color = [
   ["", "var(--primary-color)", "#e07a5f"],
-  ["#b84900", "#e07a5f"], //ส้ม
-  ["#9f2d4b", "#ce5374"], //ชมพู
-  ["#694a6d", "#966d9c"], //ม่วง
-  ["#3f508d", "#6477b9"], //ฟ้า
-  ["#4e6a69", "#729796"], //เขียว
-  ["#705448", "#a07b6a"], //น้ำตาล
-  ["#4e404f", "#856d88"], //กะปิ
-  ["#5a6672", "#818e9c"], //เทา
+  ["#b84900", "#e07a5f","#ce5374"], //ส้ม
+  ["#9f2d4b", "#ce5374","#966d9c"], //ชมพู
+  ["#694a6d", "#966d9c","#6477b9"], //ม่วง
+  ["#3f508d", "#6477b9","729796"], //ฟ้า
+  ["#4e6a69", "#729796","#a07b6a"], //เขียว
+  ["#705448", "#a07b6a","#856d88"], //น้ำตาล
+  ["#4e404f", "#856d88","818e9c"], //กะปิ
+  ["#5a6672", "#818e9c","#e07a5f"], //เทา
 ];
 
 theme.addEventListener("click", () => {
   changColor.changBG();
   changColor.changBT();
 });
-
-/* code เก่า
-let i = 0;
-function changeBG() {
-
-  i = (i < color.length-1) ? ++i : 0; //ถ้าค่า i < จำนวนสีทั้งหมด ใน array ให้ + ค่า i เพิ่มไปเรื่อยๆ ถ้าหากว่าไม่ตรงตามเงื่อนไขให้ค่า i = 0 จะเป็นสีเดิม
-  
-  console.log(i);
-  document.body.style.backgroundColor = color[i][1];
-  localStorage.setItem("theme", color[i][1]);
-
-  for (let bt of button) {
-      login.loadMember();
-      bt.setAttribute("style",`background-color: ${color[i][0]}; border-color: ${borderColor}`); 
-      localStorage.setItem("button", color[i][0]);
-      localStorage.setItem('border-button', borderColor);
-  }
-}*/
 
 //*แก้ code changeColor ให้อยู่ในรูป property function จากปกติค่า i ในการกำหนด changeBG จะถูกเข้าถึงได้จากภายนอก
 const changColor = {
@@ -87,6 +69,4 @@ const changColor = {
   },
 };
 
-document.addEventListener("DOMContentLoaded", () => {
-  changColor.loadBG();
-});
+changColor.loadBG();
