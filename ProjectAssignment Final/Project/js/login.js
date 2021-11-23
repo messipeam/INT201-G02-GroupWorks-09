@@ -19,7 +19,6 @@ export let login = {
          // logoutText.innerHTML=``
          loginBox.style.display = "none"; 
          logoutBox.style.display = "flex";
-          
         }else{
           logoutBox.style.display = "none";
         }
@@ -30,7 +29,7 @@ userLoginButton.addEventListener("click", () => { //ปุ่ม login
   if (user_input.value === "") { //ถ้า user ไม่ได้ใส่ข้อมูลมา
     alert("Please enter username."); //ให้ขึ้น alert ว่า Please enter user name
   } else {
-  login.saveMember();
+  login.saveMember(); //เรียก savemember เพื่อเก็บ cookie ของ username
   location.reload();
   alert(`Welcome ${user_input.value}`); //แต่ถ้าใส่ให้ขึ้น alert "Welcome ตามด้วยข้อมูลที่ user ใส่มา"
   } 
@@ -47,3 +46,4 @@ logoutBox.addEventListener("click", () => { //ปุ่ม logout
 document.addEventListener('DOMContentLoaded', () => {
   login.loadMember();
 })
+

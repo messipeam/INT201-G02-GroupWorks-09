@@ -16,7 +16,7 @@ function listProduct(){
     productList.setAttribute("class", "card mx-3 my-3 p-5" );  //เพิ่ม attribute class จัดรูปแบบเป็นแบบ card-product โดยใช้ boot-strap
     productList.setAttribute('style','width: 20rem;') //เพิ่ม attribute stlye ตกแต่ง css 
     //Create Image
-    let productImg = document.createElement("img");
+    const productImg = document.createElement("img");
     productImg.setAttribute("src", product.imgProduct);
     productImg.setAttribute("class", "card-img-top ");
     productImg.setAttribute(
@@ -25,36 +25,36 @@ function listProduct(){
     );
     productList.appendChild(productImg);
 
-    let detailProduct = document.createElement("div");
+    const detailProduct = document.createElement("div");
     detailProduct.setAttribute("id","detail-product");
     detailProduct.setAttribute("class","card-body d-flex flex-column");
     detailProduct.setAttribute("id","detail-product");
 
-    let productId = document.createElement("p");
+    const productId = document.createElement("p");
     productId.textContent = product.productId;
     detailProduct.appendChild(productId);
 
-    let productName = document.createElement("p");
+    const productName = document.createElement("p");
     productName.setAttribute("id", "product-name");
     productName.setAttribute("style", "font-weight : bold;");
     productName.textContent = product.name;
     detailProduct.appendChild(productName);
 
-    let productPrice = document.createElement("p");
+    const productPrice = document.createElement("p");
     productPrice.textContent = `฿ ${product.price} Baht`;
     detailProduct.appendChild(productPrice);
 
-    let productStock = document.createElement("p");
+    const productStock = document.createElement("p");
     productStock.setAttribute("id", "product-stock");
     productStock.textContent = `Available : ${product.stock}`;
     detailProduct.appendChild(productStock);
 
-    let divBuyButton = document.createElement("div");
+    const divBuyButton = document.createElement("div");
     divBuyButton.setAttribute("id","buy-container");
     divBuyButton.setAttribute("class","mt-auto");
     
     //Create Button
-    let buyButton = document.createElement("button");
+    const buyButton = document.createElement("button");
     buyButton.setAttribute("id", product.productId);
     buyButton.setAttribute("type", "button");
     buyButton.setAttribute("class", "btn btn-primary btn-lg btn-block");

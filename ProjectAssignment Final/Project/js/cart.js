@@ -40,6 +40,14 @@ export let cart = {
       alert("Login before buy something");
     }
   },
+
+  totalPrice: function(){
+    return cart.items.reduce(
+      (count, cartItem) => count + cartItem.price * cartItem.numberOfUnits,
+      0
+    );
+    
+  },
   emptyCart: function () {
     cart.items = [];
     alert("Your cart is empty!");
@@ -59,21 +67,19 @@ export let cart = {
       alert("Your cart is empty");
     } else {
       let alertProduct = "";
-      for (let readArr of cart.items) {
-        alertProduct += "Product Id : " + readArr.productId + "  ";
-        alertProduct += "Price each : " + readArr.price + "  ";
-        alertProduct += "Unit : " + readArr.numberOfUnits + "\n";
-      }
-      for (const element of cart.items) {
-        total += element.price * element.numberOfUnits;
+      for (let item of cart.items) {
+        alertProduct += "Product Id : " + item.productId + "  ";
+        alertProduct += "Price each : " + item.price + "  ";
+        alertProduct += "Unit : " + item.numberOfUnits + "\n";
+        alertProduct += "Total : " + item.price * item.numberOfUnits + "\n";
       }
       alert(
         "This is your products in cart.\n" +
           alertProduct +
           "\n" +
-          `Total price : ${total}`
+          `Total price : ${cart.totalPrice()}`
       );
-
+        console.log(total);
       console.log(cart.items.length);
     }
   },
@@ -90,9 +96,9 @@ export let cart = {
   },
 };
 
-let buttonTrash = document.getElementById("button-trash");
-let numCart = document.getElementById("numCart");
-let lookProductInCart = document.getElementById("cart-icon");
+const buttonTrash = document.getElementById("button-trash");
+const numCart = document.getElementById("numCart");
+const lookProductInCart = document.getElementById("cart-icon");
 
 buttonTrash.addEventListener("click", () => {
   cart.emptyCart();

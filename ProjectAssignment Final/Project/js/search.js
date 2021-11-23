@@ -11,14 +11,14 @@ let Search = {
         }
     },
     searchProduct: function(){
-        let searchProduct = document.getElementById("search").value.toLowerCase(); //ช่อง search ที่เป็น input ให้ค่าเป็น .toLowerCase()
-        let productElement = document.getElementById("products");
-        let filterProductByName = products.filter((product) =>
+        const searchProduct = document.getElementById("search").value.toLowerCase(); //ช่อง search ที่เป็น input ให้ค่าเป็น .toLowerCase()
+        const productElement = document.getElementById("products");
+        const filterProductByName = products.filter((product) =>
           product.name.toLowerCase().includes(searchProduct)
         );
         //ใช้ filter ในการกรองเฉพาะชื่อสินค้าที่ต้องการโดยใช้ include เช็คค่าที่เราพิมพ์เข้าไป return เป็น true false
-      
-        let divProduct = productElement.children; //เรียก children ใน element ของ product ทั้งหมดเก็บไว้ใน divProduct เพื่อเข้าถึงสินค้าทั้งหมดและทำการเปลี่ยนค่า style
+
+        const divProduct = productElement.children; //เรียก children ใน element ของ product ทั้งหมดเก็บไว้ใน divProduct เพื่อเข้าถึงสินค้าทั้งหมดและทำการเปลี่ยนค่า style
       
         if (filterProductByName.length == 0) {
           // ใช้ if-else ตรวจสอบ ค่าที่พิมพ์เข้าไปถ้าไม่ตรงกับสินค้าตัวไหนเลยให้แสดงเป็น style.display เป็น none
@@ -42,12 +42,12 @@ let Search = {
 }
 
 
-let buttonSearch = document.getElementById("button-search");
+const buttonSearch = document.getElementById("button-search"); //ปุ่มแว่นขยาย
 buttonSearch.addEventListener("click", () => {
   Search.showHideSearch();
 });
 
-let buttonSubmit = document.getElementById("button-submit");
+const buttonSubmit = document.getElementById("button-submit"); //ปุ่ม submit
 buttonSubmit.addEventListener("click", () => {
   Search.searchProduct();
 });
