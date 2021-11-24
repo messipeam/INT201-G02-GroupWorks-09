@@ -34,7 +34,7 @@ export let cart = {
         console.log(cart.items);
         cart.saveCart();
       }
-      cart.countInCart();
+     numCart.textContent = cart.countInCart();
     } else {
       alert("Login before buy something"); //ถ้าไม่มี username จะ alert ให้ login ก่อน
     }

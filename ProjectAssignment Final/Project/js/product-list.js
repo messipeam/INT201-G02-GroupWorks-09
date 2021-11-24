@@ -61,11 +61,6 @@ function listProduct(){
     buyButton.setAttribute("style", "border-radius: 10px");
     
     buyButton.addEventListener("click", cart.addProduct);
-    buyButton.addEventListener("click", () => {
-      cart.countInCart();
-      numCart.textContent = cart.countInCart();
-    });
-    
     buyButton.textContent = "Add to cart";
 
   divBuyButton.appendChild(buyButton);
