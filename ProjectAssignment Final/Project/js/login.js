@@ -9,7 +9,7 @@ const userLoginButton = document.getElementById("button-login");
 
 export let login = {
     saveMember : function() {
-        CookieUtil.setCookie("Username", user_input.value, 30);
+        CookieUtil.setCookie("Username", user_input.value, 30); //setCookie จาก input ที่ user กรอกเข้ามา
         console.log(user_input.value);
     },
     loadMember : function(){
@@ -29,7 +29,8 @@ userLoginButton.addEventListener("click", () => { //ปุ่ม login
     alert("Please enter username."); //ให้ขึ้น alert ว่า Please enter user name
   } else {
   login.saveMember(); //เรียก savemember เพื่อเก็บ cookie ของ username
-  location.reload();
+  login.loadMember();
+  //location.reload(); //refresh หน้า page
   alert(`Welcome ${user_input.value}`); //แต่ถ้าใส่ให้ขึ้น alert "Welcome ตามด้วยข้อมูลที่ user ใส่มา"
   } 
 });
@@ -43,6 +44,7 @@ logoutBox.addEventListener("click", () => { //ปุ่ม logout
 });
 
 login.loadMember();
+
 
 
 
